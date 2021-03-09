@@ -56,6 +56,6 @@ class test_npc(unittest.TestCase):
 
     def test_fight(self):
         self.test_enemy.health = 500000
-        win, __ = self.test_enemy.fight(self.test_fighter)
-        if win.name == self.test_fighter.name:
+        __, win = self.test_enemy.fight(self.test_fighter)
+        if win.name  self.test_fighter.name:
             self.fail(f"fight script broken")
