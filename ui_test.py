@@ -109,9 +109,9 @@ class test_monster(unittest.TestCase):
 class test_saving(unittest.TestCase):
     def write_test(self):
         test_player = player("test_player", "they")
-        s = save.write(, "test_character")
+        s = save.write(test_player, "test_character")
         self.assertEqual(True, s)
 
     def read_test(self):
-        s = save.read(player("o", "o"), "test_charrater")
+        s = save.read(player("o", "o"), "test_character")
         self.assertEqual(s.name(), "test_player")
