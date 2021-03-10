@@ -9,7 +9,7 @@ class UI():
         user_input = input(f"{String}>>>")
         while validator.is_not_abc(user_input):
             user_input = input(f"{String}>>>")
-        return user_input
+        return str(user_input)
 
     @staticmethod
     def options(String: str, l: int, h: int):
@@ -21,9 +21,9 @@ class UI():
     @staticmethod
     def fight_options():
         user_input = input("(A/D) >>>").lower()
-        while user_input != "a" or user_input != "d":
+        while user_input != "a" and user_input != "d":
             user_input = input("(A/D) >>>").lower()
-        return str(user_input)
+        return str(user_input.lower())
 
 
 if __name__ == '__main__':

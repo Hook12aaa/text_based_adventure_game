@@ -9,7 +9,7 @@ class main_player(base_creature):
         base_creature.__init__(self)
         self.name = name
         self.gender = gender
-        self.base_health = self.health
+        self.health = 200
 
     def fight(self, enemy: object):
         if self.health > 0:
@@ -17,7 +17,8 @@ class main_player(base_creature):
             c, a = UI.fight_options(), self.get_attack()
             if c == 'a':  # player attacks
                 d = enemy.get_paint(a)
-                print(f"{self.name} attack {enemy.name} with A:{a} and landed d:{d}")
+                print(
+                    f"{self.name} attack {enemy.name} with A:{a} and landed d:{d} with {enemy.health}")
 
             if c == "d":  # player defends
                 self.is_defending = True

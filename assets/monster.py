@@ -20,7 +20,7 @@ class monster(base_creature):
             if c == "Attack":
                 d = player.get_pain(a)
                 print(
-                    f"The {self.name} monster  hits {player.name} with A:{a} and landed d:{d}")
+                    f"The {self.name} monster  hits {player.name} with A:{a} and landed d:{d} with {player.health}")
 
             if c == "Defend":
                 self.is_defending = True

@@ -20,7 +20,7 @@ class npc(base_creature):
             if c == "Attack":
                 d = player.get_pain(a)
                 print(
-                    f"{self.name} attack {player.name} with A:{a} and landed d:{d}")
+                    f"{self.name} attack {player.name} with A:{a} and landed d:{d} with {player.health}")
             if c == "Defend":
                 self.is_defending = True
                 print(f"{self.name} is blocking your attacks")
@@ -35,9 +35,3 @@ class npc(base_creature):
     def drop_item(self):
         items = [potions(), armour(), weapon()]
         return random.choice(items)
-
-
-if __name__ == '__main__':
-    TravlerOne = npc()
-    TravlerTwo = npc()
-    TravlerTwo.fight(TravlerOne)

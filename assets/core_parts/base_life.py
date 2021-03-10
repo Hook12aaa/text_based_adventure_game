@@ -3,14 +3,15 @@ import random
 
 
 class base_stats():
-    # Core Stats For all life
-    defense = random.randint(5, 50)
-    attack = random.randint(5, 50)
-    health = 100
+    def __init__(self):
+        # Core Stats For all life
+        self.defense = random.randint(5, 50)
+        self.attack = random.randint(5, 50)
+        self.health = 100
 
-    # Overwritable stats
-    name = "OVERWRITEABLE"
-    gender = "OVERWRITEABLE"
+        # Overwritable stats
+        self.name = "OVERWRITEABLE"
+        self.gender = "OVERWRITEABLE"
 
     def stats(self):
 
@@ -27,9 +28,11 @@ class fight_values(base_stats):
     is_defending = False
 
     def get_attack(self) -> int:
+        """ return random attack value"""
         return round(self.attack * random.uniform(1, 2), 0)
 
     def get_pain(self, attack: int) -> int:
+        """ return damage value; takes enemy attack"""
         if not self.is_defending:
             p = round(((self.defense / 100)+1) * attack, 1)
             self.health -= p

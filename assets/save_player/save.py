@@ -1,4 +1,3 @@
-
 import json
 import random
 
@@ -6,15 +5,14 @@ import random
 class save():
     @staticmethod
     def write(player: object, name: str):
-        stats = {"name": player.name,
-                 "gender": player.gender,
-                 "defense": player.defense,
-                 "attacks": player.health,
-                 "health": player.health,
-                 }
-
-        with open(f'{name}.json', 'w') as f:
-            json.dump(stats, f)
+        """write object player to a json file"""
+        try:
+            with open(f'{name}.json', 'w') as f:
+                json.dump(player.__dict__, f)
+                True
+        except Exception as e:
+            print(e)
+            return False
 
     @staticmethod
     def read(player: object, name: str):
