@@ -4,10 +4,10 @@ import random
 
 class weapon():
 
-    """weapon object:
-
-    ._get_rarity() = self triggered weapon luck
-    .use_weapon return int of player.attack used weapon
+    """call weapon object with stats for attack
+    Functions:
+        ._get_rarity() #self triggered weapon luck,
+        .use_weapon() #return int of player.attack used weapon,
 
     """
     equip = "attack"

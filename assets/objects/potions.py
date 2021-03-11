@@ -3,12 +3,12 @@ from random import randint
 
 
 class potions():
-    """potion object:
+    """potion object with call stats for health:
 
-    ._get_rarity() = self triggered potion luck
-    .use_potion return int of player.health used potion
-    Returns:
-        [type]: [description]
+    Functions:
+        ._get_rarity() = self triggered potion luck
+        .use_potion return int of player.health used potion
+
     """
 
     equip = "potion"

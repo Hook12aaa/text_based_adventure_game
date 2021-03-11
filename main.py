@@ -5,6 +5,16 @@ from holy import holy
 
 class main():
     def move_to_location(Player):
+        """Will call a class depending on user input
+
+        Locations:
+            dead.spawn(),
+            holy.spawn()
+
+        Args:
+            player (obj): the main_player
+        
+        """
         print("would you like to travel toh 1:hell or heaven?")
         location = UI.options("(1-2)", 1, 2)
 
@@ -15,6 +25,7 @@ class main():
             holy.spawn(Player)
 
     def on_boarding():
+        """ creates a player object with user input ,writes to save and starts the location"""
         print(f"hello and welcome to my game!\n What is your name?")
         name = UI.ask("(abc)")
         print(f"Oh your name is {name} and what is your gender?")
@@ -27,6 +38,7 @@ class main():
         main.move_to_location(Player)
 
     def reload():
+        """ loads a player object with user input starts the location"""
         print('what was your character called?')
         while True:
             try:
@@ -40,6 +52,7 @@ class main():
 
 
     def run():
+        """main function to run"""
         print("Have you ever played before? \n 1: Yes, 2: No")
         c = UI.options("(1-2)",1,2)
         if c == 1:
