@@ -56,6 +56,8 @@ class dead():
         print("You are now in dead land, in front you see two paths. Which do you take?")
         path = UI.options("(1-2)", 1, 2)
         if path == 1:
-            dead.path_one(player)
+            if dead.path_one(player):
+                print("you died good luck next time")
         if path == 2:
-            dead.path_two(player)
+            if dead.path_two(player):
+                print("you died good luck next time")

@@ -18,6 +18,7 @@ class holy():
     def path_one(player):
         player, win = holy.fight_knight(player)
         if not win:
+            print("you died")
             return True
         else:
              print("well done on winning!!")
@@ -27,6 +28,7 @@ class holy():
         if c == 1:
             player, win = holy.fight_monster(player)
             if not win:
+                print("you died")
                 return True
             else:
                 print("well done on winning!!")
@@ -35,6 +37,7 @@ class holy():
             player.user_equip(objects.potions())
             player, win = holy.fight_knight(player)
             if not win:
+                print("you died")
                 return True
             else:
                 print("well done on winning!!")
@@ -46,6 +49,7 @@ class holy():
     @staticmethod
     def path_two(player):
         print("you walked into a room with no floow, you died!")
+        return True
 
     @staticmethod
     def path_three(player):
