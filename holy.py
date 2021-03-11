@@ -48,7 +48,7 @@ class holy():
 
     @staticmethod
     def path_two(player):
-        print("you walked into a room with no floow, you died!")
+        print("you walked into a room with no floor, you died!")
         return True
 
     @staticmethod
