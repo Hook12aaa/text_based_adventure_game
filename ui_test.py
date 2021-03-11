@@ -106,7 +106,8 @@ class test_monster(unittest.TestCase):
             self.fail("fight script broken for monster")
 
 
-class test_saving(unittest.TestCase):
+class test_file(unittest.TestCase):
+
     def write_test(self):
         test_player = player("test_player", "they")
         s = save.write(test_player, "test_character")
