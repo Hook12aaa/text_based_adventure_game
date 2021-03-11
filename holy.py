@@ -57,7 +57,7 @@ class holy():
         if not win:
             return True
         else:
-            print("you won, the fight was hard and tring, you die from staveration")
+            print("you won, the fight was hard and trying, you die from staveration")
 
     def spawn(player):
         print("You are now in holy land, in front you see three paths. Which do you take?")
