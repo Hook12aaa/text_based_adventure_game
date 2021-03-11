@@ -9,22 +9,51 @@ class holy():
         win, __ = player.fight(enemy_knight)
         if win.name == player.name:
             player = win
-            return player, False
+            return player, True
         else:
             print("You died!")
-            return player, True
+            return player, False
 
     @staticmethod
     def path_one(player):
-        pass
+        player, win = holy.fight_knight(player)
+        if not win:
+            return True
+        else:
+             print("well done on winning!!")
+        print(
+            "There is two paths one leads to  1: a office another to 2: a town.\n you choose....")
+        c = UI.options("(1-2)", 1, 2)
+        if c == 1:
+            player, win = holy.fight_monster(player)
+            if not win:
+                return True
+            else:
+                print("well done on winning!!")
+        if c == 2:
+            print("You find a potion on the floor!")
+            player.user_equip(objects.potions())
+            player, win = holy.fight_knight(player)
+            if not win:
+                return True
+            else:
+                print("well done on winning!!")
+
+
+        print("Well done on going through that mess! You have passed the trial")
+
 
     @staticmethod
     def path_two(player):
-        pass
+        print("you walked into a room with no floow, you died!")
 
     @staticmethod
     def path_three(player):
-        pass
+        player, win = holy.fight_monster(player)
+        if not win:
+            return True
+        else:
+            print("you won, the fight was hard and tring, you die from staveration")
 
     def spawn(player):
         print("You are now in holy land, in front you see three paths. Which do you take?")

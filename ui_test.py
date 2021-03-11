@@ -1,10 +1,12 @@
 import unittest
 from unittest.mock import patch
-from assets import player, validator, npc, monster, UI, main_player, save
-
+from assets import validator, npc, monster, UI, main_player, save_info , potions , weapon , armour
+from holy import holy
+from dead import dead
 
 class test_validator(unittest.TestCase):
     def test_abc(self):
+
         g, b = validator.is_not_abc("asbc"), validator.is_not_abc("1234")
         self.assertFalse(g)
         self.assertTrue(b)
@@ -107,11 +109,82 @@ class test_monster(unittest.TestCase):
 
 
 class test_saving(unittest.TestCase):
-    def write_test(self):
-        test_player = player("test_player", "they")
-        s = save.write(, "test_character")
+    def test_write(self):
+        test_player = main_player("test_player", "they")
+        s = save_info.write( test_player, "test_character")
         self.assertEqual(True, s)
 
-    def read_test(self):
-        s = save.read(player("o", "o"), "test_charrater")
-        self.assertEqual(s.name(), "test_player")
+    def test_read(self):
+        rewrite_player = main_player("o", "o")
+        s = save_info.read(rewrite_player, "test_player")
+        self.assertEqual(s.name, "best player")
+
+
+
+class test_player_obj(unittest.TestCase):
+    my_figter = main_player("Bob", "Female")
+    boss = npc()
+    test_user = main_player("test", "test_gender")
+    test_equip = main_player("fred","Bob")
+
+    def test_gen_player(self):
+        self.assertEqual(self.test_user.name, "test")
+        self.assertEqual(self.test_user.gender, "test_gender")
+
+    def test_have_stats(self):
+        self.assertGreaterEqual(self.test_user.attack, 5,
+                                "attack is generatored")
+        self.assertEquals(self.test_user.health, 200, "health is generatored")
+        self.assertGreaterEqual(self.test_user.defense,
+                                5, "defense is generatored")
+
+    def test_fight(self):
+        with patch('builtins.input', return_value='a'):
+            self.my_figter.health = 50000000000000000
+            __, win =  self.my_figter.fight(self.boss)
+            if win.name == self.my_figter.name:
+                self.fail("player fight script broken")
+    
+    def test_equip_potions(self):
+        self.test_equip.health = 50
+        potion = potions()
+        potion.modifer = 1.25
+        self.test_equip.user_equip(potion)
+        self.assertEquals(self.test_equip.health, 62)
+    
+
+    def test_equip_weapons(self):
+        self.test_equip.attack = 50
+        knife = weapon()
+        knife.modifer = 10
+        self.test_equip.user_equip(knife)
+        self.assertEquals(self.test_equip.attack, 60)
+    
+
+    def test_equip_armour(self):
+        self.test_equip.defense = 50
+        shield = armour()
+        shield.modifer = 10
+        self.test_equip.user_equip(shield)
+        self.assertEquals(self.test_equip.defense, 60)
+    
+
+class test_holy_land(unittest.TestCase):
+    def test_knight_fight(self):
+        test_player = main_player("test_player","genderless")
+        test_player.health = 500000000
+        with patch('builtins.input', return_value='a'):
+            test_player, win = holy.fight_knight(test_player)
+            if win != True:
+                self.fail('holy land script broken')
+
+
+class test_dead_land(unittest.TestCase):
+    def test_monster_fight(self):
+        test_player = main_player("test_player","genderless")
+        test_player.health = 500000000
+        with patch('builtins.input', return_value='a'):
+            test_player, win = dead.fight_monster(test_player)
+            if win != True:
+                self.fail('dead land script broken')
+                

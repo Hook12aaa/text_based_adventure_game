@@ -27,3 +27,5 @@ def on_boarding():
     print("""Sorry for i was only interseted, it's hard to see.
     Welcome to this wonderful land.""")
     move_to_location(Player)
+
+on_boarding()
