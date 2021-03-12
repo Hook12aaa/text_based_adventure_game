@@ -3,9 +3,11 @@ import random
 
 
 class base_ai():
+    """ base_ai logic for all fighting by npc
+    .choose_state() return fight type"""
 
     @staticmethod
-    def __defend():
+    def __defend() -> str:
         is_lucky = random.choice([True, False])
         if is_lucky:
             return "Defend"
@@ -13,7 +15,7 @@ class base_ai():
             return "Failed"
 
     @staticmethod
-    def __attack():
+    def __attack() ->str:
         is_lucky = random.choice([True, False])
         if is_lucky:
             return "Attack"
@@ -22,6 +24,11 @@ class base_ai():
 
     @staticmethod
     def choose_state() -> str:
+        """[random fighting for npc state generater]
+
+        Returns:
+            str]: Attack or Defend or Failed
+        """
         c = random.choice(["defense", "attack"])
         if c == 'attack':
             return base_ai.__attack()
