@@ -62,7 +62,7 @@ class test_npc(unittest.TestCase):
                                 5, "defense is generatored")
 
     def test_attack_value(self):
-        for i in range(100):
+        for _ in range(100):
             try:
                 self.assertLess(self.test_npc.get_attack(), 150)
             except ZeroDivisionError:
