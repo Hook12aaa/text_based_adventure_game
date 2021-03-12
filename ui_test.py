@@ -112,14 +112,15 @@ class test_monster(unittest.TestCase):
 class test_file(unittest.TestCase):
 
     def write_test(self):
-        test_player = player("test_player", "they")
-        s = save.write(test_player, "test_character")
+        test_player = main_player("test_player", "they")
+        s = save_info.write(test_player, "test_character")
         self.assertEqual(True, s)
 
     def read_test(self):
-        s = save.read(player("o", "o"), "test_character")
+        s = save_info.read(main_player("o", "o"), "test_character")
         self.assertEqual(s.name(), "test_player")
-        
+
+
 class test_saving(unittest.TestCase):
     def test_write(self):
         test_player = main_player("test_player", "they")
@@ -130,7 +131,6 @@ class test_saving(unittest.TestCase):
         rewrite_player = main_player("o", "o")
         s = save_info.read(rewrite_player, "test_player")
         self.assertEqual(s.name, "best player")
-
 
 
 class test_player_obj(unittest.TestCase):
