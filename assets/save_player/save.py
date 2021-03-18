@@ -41,3 +41,22 @@ class save_info():
             player.health = stats['health']
         return player
 
+    @staticmethod
+    def location(name:str) -> object:
+        """read location from json and creates an object
+
+        Args:
+            name (str): name of location selected
+
+        Returns:
+            object: location to travel to
+        """
+        new_location = lambda:None
+        with open(f'assets/save_player/{name}.json', 'r') as f:
+            info = json.load(f)
+            new_location.name = info['name']
+            new_location.enemy = info['enemy']
+            new_location.fight_text = info['fight_text']
+            new_location.pathone = info['pathone']
+            new_location.pathtwo = info['pathtwo']
+        return new_location
