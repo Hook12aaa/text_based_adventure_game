@@ -52,7 +52,7 @@ class play_location():
             for equip in type_of_loot.keys():
                 if equip == action:
                     self.player.user_equip(type_of_loot[equip])
-
+                    continue
             if action == "fight":
                 print("you have entered into a fight!")
                 if self.is_fight_enemy_lost():
