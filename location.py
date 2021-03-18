@@ -21,6 +21,11 @@ class play_location():
         self.location = location
 
     def is_fight_enemy_lost(self):
+        """a fight script to make the fight scenes work
+
+        Returns:
+            bool : state of win or lost
+        """
         enemy = npc() if self.location.enemy == "npc" else monster()
         print(f"{self.location.fight_text}{enemy.name} is attacking you")
         win, __ = self.player.fight(enemy)
@@ -33,6 +38,11 @@ class play_location():
 
 
     def do_action(self,path):
+        """will follow the list of actions set for the playe on the path
+
+        Args:
+            path (list): the path the player takes
+        """
         type_of_loot = {
             "potion": objects.potions(),
             "weapon": objects.weapon(),
@@ -50,6 +60,8 @@ class play_location():
         print("you have passed, let's move on")
 
     def spawn(self):
+        """spawn point for player will move to different paths"""
+
         print(f"You are now in {self.location.name}\n You see two doors in front which do you choose 1 or 2?")
         c = UI.options("(1-2)",1,2)
         if c == 1:
