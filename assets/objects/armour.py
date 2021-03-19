@@ -34,5 +34,3 @@ class armour():
         print(f"{player.name}:\nAttached:{self.name}\Defense:{self.modifer}+")
         return player.defense
 
-    def __del__(self):
-        print("you have used up your armour!")

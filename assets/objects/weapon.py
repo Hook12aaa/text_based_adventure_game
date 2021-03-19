@@ -33,6 +33,3 @@ class weapon():
         player.attack += self.modifer
         print(f"{player.name}:\nAttached:{self.name}\nAttack:{self.modifer}+")
         return player.attack
-
-    def __del__(self):
-        print("you have used destroyed your sword!")
