@@ -14,7 +14,7 @@ class save_info():
             bool: true if successful (bug testing)
         """
         try:
-            with open(f'assets/save_player/{name}.json', 'w') as f:
+            with open(f'assets\save_player/{name}.json', 'w') as f:
                 json.dump(player.__dict__, f)
                 return True
         except Exception as e:
@@ -32,7 +32,7 @@ class save_info():
         Returns:
             player (object): your new stats
         """
-        with open(f'assets/save_player/{name}.json', 'r') as f:
+        with open(f'assets\save_player/{name}.json', 'r') as f:
             stats = json.load(f)
             player.name = stats['name']
             player.gender = stats['gender']
@@ -52,7 +52,7 @@ class save_info():
             object: location to travel to
         """
         new_location = lambda:None
-        with open(f'assets/save_player/{name}.json', 'r') as f:
+        with open(f'assets\save_player/{name}.json', 'r') as f:
             info = json.load(f)
             new_location.name = info['name']
             new_location.enemy = info['enemy']
