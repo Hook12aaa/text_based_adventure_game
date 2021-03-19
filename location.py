@@ -1,19 +1,5 @@
 from assets import monster,npc,objects,UI,main_player
 
-
-
-class hell():
-    name = 'hell'
-    enemy = 'monster'
-    fight_text = 'Suddenly you walk forward and see '
-    pathone = ['potion','fight']
-    pathtwo = ['weapon','fight']
-    
-
-
-
-
-
 class play_location():
     
     def __init__(self,player,location):
@@ -74,8 +60,3 @@ class play_location():
             print('you move on to path one')
             self.do_action(self.location.pathone)
             print('you win!, time to escape')
-        
-        
-
-location = play_location(main_player("bob","male"),hell())
-location.spawn()
