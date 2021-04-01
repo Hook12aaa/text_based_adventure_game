@@ -44,17 +44,18 @@ class monster(base_creature):
         if(self.health > 0):
             self.is_defending = False
             c, a = base_ai.choose_state(), self.get_attack()
-            if c == "Attack":
-                d = player.get_pain(a)
-                print(
-                    f"The {self.name} monster  hits {player.name} with A:{a} and landed d:{d} with {player.health}")
+            if not player.is_defending:
+                if c == "Attack":
+                    d = player.get_pain(a)
+                    print(
+                        f"The {self.name} monster  hits {player.name} with A:{a} and landed d:{d} with {player.health}")
 
-            if c == "Defend":
-                self.is_defending = True
-                print(f"{self.name} has their body in defense")
+                if c == "Defend":
+                    self.is_defending = True
+                    print(f"{self.name} has their body in defense")
 
-            if c == "Failed":
-                print(f"{self.name} stalks {player.name}")
+                if c == "Failed":
+                    print(f"{self.name} stalks {player.name}")
             return player.fight(self)
         else:
             print(f"{player.name} wins!")

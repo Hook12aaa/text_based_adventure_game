@@ -74,7 +74,7 @@ class test_npc(unittest.TestCase):
                 self.fail("ZeroDivisionError on get_pain()")
 
     def test_fight(self):
-        self.test_enemy.health = 500000000000
+        self.test_enemy.health = 500000000000000000
         self.test_enemy.name = "Kirito"
         __, win = self.test_enemy.fight(self.test_fighter)
         if win.name == self.test_enemy.name:
@@ -140,7 +140,7 @@ class test_player_obj(unittest.TestCase):
             self.my_figter.health = 50000000000000000
             __, win =  self.my_figter.fight(self.boss)
             if win.name == self.my_figter.name:
-                self.fail("player fight script broken")
+                self.fail(f"player fight script broken {win.name}{self.my_figter.name}")
     
     def test_equip_potions(self):
         self.test_equip.health = 50

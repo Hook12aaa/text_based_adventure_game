@@ -43,17 +43,18 @@ class npc(base_creature):
         """
         if(self.health > 0):
             self.is_defending = False
-            c, a = base_ai.choose_state(), self.get_attack()
-            if c == "Attack":
-                d = player.get_pain(a)
-                print(
-                    f"{self.name} attack {player.name} with A:{a} and landed d:{d} with {player.health}")
-            if c == "Defend":
-                self.is_defending = True
-                print(f"{self.name} is blocking your attacks")
+            if not player.is_defending:
+                c, a = base_ai.choose_state(), self.get_attack()
+                if c == "Attack":
+                    d = player.get_pain(a)
+                    print(
+                        f"{self.name} attack {player.name} with A:{a} and landed d:{d} with {player.health}")
+                if c == "Defend":
+                    self.is_defending = True
+                    print(f"{self.name} is blocking your attacks")
 
-            if c == "Failed":
-                print(f"{self.name} Failed and missed")
+                if c == "Failed":
+                    print(f"{self.name} Failed and missed")
             return player.fight(self)
         else:
             print(f"{player.name} wins!")
