@@ -1,5 +1,9 @@
 from assets import monster,npc,objects,UI,main_player
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/Mac
 class play_location():
     
     def __init__(self,player,location):

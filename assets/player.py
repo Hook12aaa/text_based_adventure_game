@@ -23,7 +23,6 @@ class main_player(base_creature):
             self (object): player
         """
         if self.health > 0:
-            self.is_defending = False
             c, a = UI.fight_options(), self.get_attack()
             if c == 'a':  # player attacks
                 d = enemy.get_pain(a)
