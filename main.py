@@ -14,7 +14,7 @@ class main():
             player (obj): the main_player
         
         """
-        print("would you like to travel toh 1:hell or heaven?")
+        print("would you like to travel to 1:hell or 2:heaven?")
         location = UI.options("(1-2)", 1, 2)
 
         if location == 1:
@@ -42,13 +42,8 @@ class main():
     def reload():
         """ loads a player object with user input starts the location"""
         print('what was your character called?')
-        while True:
-            try:
-                player = save_info.read(main_player("name","gender"),input("(abc)>>>"))
-                break
-            except FileNotFoundError:
-                print('that is wrong which one is it?')
-                continue
+        selected_player = UI.file_options(save_info.list_players())
+        player = save_info.read(main_player('', ''),selected_player)
         print(f'here is your stats:\n {player.stats()}\n\nWelcome to this wonderful land.')
         main.move_to_location(player)
 

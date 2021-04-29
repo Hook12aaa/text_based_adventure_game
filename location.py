@@ -1,6 +1,5 @@
 from assets import monster,npc,objects,UI,main_player
 
-
 class play_location():
     
     def __init__(self,player,location):
@@ -18,10 +17,10 @@ class play_location():
         win, __ = self.player.fight(enemy)
         if win.name == self.player.name:
             print("you won the fight congrats")
-            return False
         else:
             print("you died!")
-            return True
+            UI.exit_game()
+
 
 
     def do_action(self,path):
@@ -42,9 +41,9 @@ class play_location():
                     continue
             if action == "fight":
                 print("you have entered into a fight!")
-                if self.is_fight_enemy_lost():
-                    break
+                self.is_fight_enemy_lost()
         print("you have passed, let's move on")
+    
 
     def spawn(self):
         """spawn point for player will move to different paths"""
@@ -56,8 +55,10 @@ class play_location():
             print('you move on to path two')
             self.do_action(self.location.pathtwo)
             print('you win!, you find a hole and escape')
+            UI.exit_game()
         elif c == 2:
             self.do_action(self.location.pathtwo)
             print('you move on to path one')
             self.do_action(self.location.pathone)
             print('you win!, time to escape')
+            UI.exit_game()

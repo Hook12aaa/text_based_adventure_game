@@ -44,6 +44,3 @@ class potions():
         else:
             print(f"HP:{player.health} ==> {player.health*self.modifer}")
             return round(player.health)
-
-    def __del__(self):
-        print("you have used a potion!")

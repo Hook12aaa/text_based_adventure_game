@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
+from os import stat
 from .vaildator import validator
-
+import sys
 
 class UI():
 
@@ -47,3 +48,25 @@ class UI():
         while user_input != "a" and user_input != "d":
             user_input = input("(A/D) >>>").lower()
         return str(user_input.lower())
+
+    @staticmethod
+    def file_options(files:list)->str:
+        """Will only return data when User enters a input in files
+
+        Args:
+            files (list): the list of files
+
+        Returns:
+            file (str): the name of file to be used
+        """
+        for f in files: print(f)
+        user_input = input('(Name)>>>').lower()
+        while user_input not in files:
+            user_input = input('(Name)>>>').lower()
+
+        return str(user_input)
+    
+    @staticmethod
+    def exit_game()-> None:
+        """When called the game will exit"""
+        sys.exit(1)

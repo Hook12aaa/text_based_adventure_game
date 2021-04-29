@@ -1,5 +1,5 @@
 import json
-
+import os
 
 class save_info():
     @staticmethod
@@ -14,7 +14,7 @@ class save_info():
             bool: true if successful (bug testing)
         """
         try:
-            with open(f'assets/save_player/{name}.json', 'w') as f:
+            with open(os.path.join(f'assets/save_player/{name}.json'), 'w') as f:
                 json.dump(player.__dict__, f)
                 return True
         except Exception as e:
@@ -32,13 +32,10 @@ class save_info():
         Returns:
             player (object): your new stats
         """
-        with open(f'assets/save_player/{name}.json', 'r') as f:
+        with open(os.path.join(f'assets/save_player/{name}.json'), 'r') as f:
             stats = json.load(f)
-            player.name = stats['name']
-            player.gender = stats['gender']
-            player.defense = stats['defense']
-            player.attacks = stats['attacks']
-            player.health = stats['health']
+            for attr in stats.keys():
+                setattr(player,attr,stats[f'{attr}'])
         return player
 
     @staticmethod
@@ -52,11 +49,20 @@ class save_info():
             object: location to travel to
         """
         new_location = lambda:None
-        with open(f'assets/save_player/{name}.json', 'r') as f:
+        with open(os.path.join(f'assets/save_player/{name}.json'), 'r') as f:
             info = json.load(f)
-            new_location.name = info['name']
-            new_location.enemy = info['enemy']
-            new_location.fight_text = info['fight_text']
-            new_location.pathone = info['pathone']
-            new_location.pathtwo = info['pathtwo']
+            for attr in info.keys():
+                setattr(new_location,attr,info[f'{attr}'])
         return new_location
+
+
+    @staticmethod
+    def list_players() -> list:
+        """List playable charracters in the /save_player dir without .json tag
+
+        Returns:
+            list: playable charracters without .json tag ie ['test_player','test_character']
+        """
+        files = [f for f in os.listdir('assets/save_player/') if '.json' in f]
+        return  [f.replace('.json','') for f in files if f not in ('hell.json','heven.json')]
+
