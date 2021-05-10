@@ -1,5 +1,6 @@
 import json
 import os
+from typing import Mapping
 
 class save_info():
     @staticmethod
@@ -14,7 +15,7 @@ class save_info():
             bool: true if successful (bug testing)
         """
         try:
-            with open(os.path.join(f'assets/save_player/{name}.json'), 'w') as f:
+            with open(os.path.join(os.path.dirname(__file__),f'{name}.json'), 'w') as f:
                 json.dump(player.__dict__, f)
                 return True
         except Exception as e:
@@ -32,7 +33,7 @@ class save_info():
         Returns:
             player (object): your new stats
         """
-        with open(os.path.join(f'assets/save_player/{name}.json'), 'r') as f:
+        with open(os.path.join(os.path.dirname(__file__),f'{name}.json'), 'r') as f:
             stats = json.load(f)
             for attr in stats.keys():
                 setattr(player,attr,stats[f'{attr}'])
@@ -49,7 +50,7 @@ class save_info():
             object: location to travel to
         """
         new_location = lambda:None
-        with open(os.path.join(f'assets/save_player/{name}.json'), 'r') as f:
+        with open(os.path.join(os.path.dirname(__file__),f'{name}.json'), 'r') as f:
             info = json.load(f)
             for attr in info.keys():
                 setattr(new_location,attr,info[f'{attr}'])
@@ -65,4 +66,3 @@ class save_info():
         """
         files = [f for f in os.listdir('assets/save_player/') if '.json' in f]
         return  [f.replace('.json','') for f in files if f not in ('hell.json','heven.json')]
-
