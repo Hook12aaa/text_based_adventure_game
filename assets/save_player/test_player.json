@@ -1,0 +1,7 @@
+{
+    "name": "best player",
+    "gender": "genderless",
+    "defense": 200,
+    "attacks": 1000,
+    "health": 10000
+}

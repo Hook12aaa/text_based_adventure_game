@@ -1,0 +1,13 @@
+{
+    "name": "hell",
+    "enemy": "monster",
+    "fight_text": "Suddenly you walk forward and see ",
+    "pathone": [
+        "potion",
+        "fight"
+    ],
+    "pathtwo": [
+        "weapon",
+        "fight"
+    ]
+}
